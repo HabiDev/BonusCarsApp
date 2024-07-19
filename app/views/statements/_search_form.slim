@@ -1,0 +1,3 @@
+.col-6.text-end
+  = search_form_for (@q), builder: SimpleForm::FormBuilder do |f|
+    = f.input :comment_or_item_eq, label: false, placeholder: "Поиск", autofocus: true, input_html: { class: 'form-control form-control-sm' }

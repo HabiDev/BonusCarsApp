@@ -1,0 +1,27 @@
+ru:
+  home:
+    title: Главная
+  about:
+    title: О нас
+  contact:
+    title: Контакты
+  panels:
+    title: Панель администратора
+  users:
+    title: Сотрудники
+    title_list: Перечень сотрудников
+  cards:
+    title: Бонусные карты
+  resource: 
+    create: Создание
+    edit: Редактирование
+    reset_password: Изменение пароля
+  photos:
+    create: Прекрепить фото
+  shared:
+    errors:
+      header:
+        few: "Выявлено %{count} ошибки"
+        many: "Выявлено %{count} ошибок"
+        one: "Выявлено %{count} ошибка"
+        other: "Выявлено %{count} ошибок"

@@ -1,0 +1,16 @@
+
+= turbo_frame_tag "sub_statements"
+  #resp-table.fixed-table
+    #resp-table-header.tblhead-resp
+      .table-header-cell.col-12.col-md-3
+        = t("#{sub_statements.model.human_attribute_name(:card_id)}") 
+      .table-header-cell.col-12.col-md-2
+        = t("#{sub_statements.model.human_attribute_name(:charge_sum)}")
+      .table-header-cell.col-12.col-md-2
+        = t("#{sub_statements.model.human_attribute_name(:balance_before)}")
+      .table-header-cell.col-12.col-md-3
+        = t("#{sub_statements.model.human_attribute_name(:comment)}")
+      .table-header-cell.col-12.col-md-2
+        = t("#{sub_statements.model.human_attribute_name(:status)}")
+    = turbo_frame_tag "resp-table-body"
+      = render sub_statements

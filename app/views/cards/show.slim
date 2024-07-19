@@ -1,0 +1,51 @@
+= turbo_frame_tag "modal_form"
+  .modal-header
+    h4#modalTaskLabel.modal-title.fw-bold.lh-1
+      = "#{@card.model_name.human}"           
+    button.btn-close[type="button" data-bs-dismiss="modal" aria-label="Close"]
+  .modal-body
+    .card.shadow-sm.p-0.mb-3.bg-white.rounded-9
+      .card-body               
+        .col-12
+          .h5.fst-italic.fw-bold.text-muted
+            = "#{@card.class.human_attribute_name(:owner_card)}: "
+            span.fw-normal
+              = @card.owner_card
+          hr.p-0.mt-0
+          .row.mx-1
+            .col-12
+              .h6.fst-italic.fw-bold.text-muted
+                = "#{@card.class.human_attribute_name(:code_card)}:"
+                span.fw-normal.px-3
+                  = @card.code_card
+              .row.mt-4
+                .col-4.text-center
+                  .h6.fst-italic.fw-bold.text-success.small               
+                    = "#{@card.class.human_attribute_name(:release_at)}"
+                  hr.mt-0.text-primary
+                  .row
+                    span.fw-normal.small
+                      = l(@card.release_at, format: :normal)
+                .col-4.text-center
+                  .h6.fst-italic.fw-bold.text-success.small                 
+                    = "#{@card.class.human_attribute_name(:balance)}"
+                  hr.mt-0.text-primary
+                  .row
+                    span.fw-normal.small
+                      = @card.balance
+                .col-4.text-center
+                  .h6.fst-italic.fw-bold.text-success.small                  
+                    = "#{@card.class.human_attribute_name(:default_charge_sum)}"
+                  hr.mt-0.text-primary
+                  .row
+                    span.fw-normal.small.mt-0
+                      = @card.default_charge_sum
+                        .row.mx-1
+            - if @card.locked_at.present?
+              .row
+                .col-12.mt-5
+                  .h6.fst-italic.fw-bold.text-danger
+                    = "#{@card.class.human_attribute_name(:locked_at)}:"
+                    span.fw-normal.px-3
+                      =l(@card.locked_at, format: :normal)
+    

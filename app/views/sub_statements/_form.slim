@@ -1,0 +1,14 @@
+= simple_form_for [@statement, @sub_statement] do |f|
+  = f.error_notification
+  .row
+    .col-12.col-md-8
+      = f.input :card_id, collection: Card.all, label_method: :owner_card, value_method: :id, required: true, autofocus: true, class: 'form-control form-control-sm'
+    .col-12.col-md-4  
+      = f.input :charge_sum, required: true, autofocus: true, class: 'form-control form-control-sm' 
+  .row
+    .col-12.col-md-12
+      = f.input :comment, as: :text, required: true, autofocus: true, class: 'form-control form-control-sm' 
+  .row  
+    .col-12.col-md-12.text-end
+      span.p-2
+        = f.submit "#{t('submit.save')}", class: "btn btn-primary"

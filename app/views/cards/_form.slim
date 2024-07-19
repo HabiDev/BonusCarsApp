@@ -1,0 +1,17 @@
+= simple_form_for @card do |f|
+  = f.error_notification
+  .row
+    .col-12.col-md-10
+      = f.input :owner_card, required: true, autofocus: true, class: 'form-control form-control-sm' 
+  .row
+    .col-12.col-md-8
+      = f.input :code_card, required: true, autofocus: true, class: 'form-control form-control-sm' 
+    .col-12.col-md-4
+      = f.input :default_charge_sum, required: true, autofocus: true, class: 'form-control form-control-sm' 
+  .row
+    .col-12.col-md-4
+      = f.input :release_at, as: :string, input_html: { data: { controller: 'flatpickr' }, class: "form-control card-fan" }
+  .row  
+    .col-12.col-md-12.text-end
+      span.p-2
+        = f.submit "#{t('submit.save')}", class: "btn btn-primary"

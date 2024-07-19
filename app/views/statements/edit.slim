@@ -1,0 +1,8 @@
+.container
+  = turbo_frame_tag "modal_form"
+    .modal-header
+      h3#modalNewEditLabel.modal-title
+        = t('resource.edit') 
+      button.btn-close[type="button" data-bs-dismiss="modal" aria-label="Close"]       
+    .modal-body
+      = render 'statements/form', statement: @statement

@@ -1,0 +1,50 @@
+ru:
+  app:
+    title: Информационная система    
+  navbar:
+    brand: На главную
+    home_link: Главная
+    about_link: О нас
+    contact_link: Контакты
+    sign_in: Войти
+    sign_out: Выйти
+    aria_label: Переключатель навигации 
+  button:
+    new: Добавить
+    edit: Редактировать
+    show: Просмотр
+    destroy: Удалить
+    back: Назад
+    close: Закрыть
+    send_agree: Отправить на согласование
+    reset_password: Изменение пароля
+    lock_user: Заблокировать
+    unlock_user: Разблокировать    
+  submit:
+    create: Создать
+    update: Обновить
+    cancel: Отмена
+    save: Сохранить
+    search: Найти
+    clear: Сбросить
+    agree: Отправить на согласование
+  caption:
+    current_sign_in: в системе
+    last_sign_in: последний сеанс
+    completed_task: Проделанные работы
+    performed_works: Выполненные работы
+    mission_executors: Исполнители
+    completed_missions: Ход исполнения
+    performer: Исп.
+    locked_at: Заблокирован 
+  notice:
+    record_create: Запись удачно создан.
+    record_destroy: Запись удален.
+    record_edit: Запись откоректировано.
+    record_destroy_errors: Запись не может быть удалена. Иммеются связанные записи.
+    export_record_not_found: Нет данных для выгрузки.
+    confirm: Вы дествительно хотите удалить запись?
+    sign_out: Вы дествительно хотите выйти?
+    photos_create: Изоброжение (файл) удачно добавлен.
+    photo_destroy: Изоброжение (файл) удачно удален.
+

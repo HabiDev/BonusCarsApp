@@ -1,0 +1,20 @@
+#modalNewEdit.modal[data-controller="my-modal" data-my-modal-target="modalNewEdit" data-action="turbo:frame-load->my-modal#open turbo:submit-end->my-modal#close"]
+  .modal-dialog.modal-lg
+    .modal-content
+      = turbo_frame_tag "modal_form"
+/ #modalTask.modal[tabindex="-1" data-controller="modal-task" data-modal-task-target="modalTask" data-action="turbo:frame-load->modal-task#open"]
+/   .modal-dialog.modal-lg
+/     .modal-content
+/       = turbo_frame_tag "modal_task"
+/ #modalMission.modal[tabindex="-1" data-controller="modal-mission" data-modal-mission-target="modalMission" data-action="turbo:frame-load->modal-mission#open"]
+/   .modal-dialog.modal-lg
+/     .modal-content
+/       = turbo_frame_tag "modal_mission"
+/ #modalSearch.modal[tabindex="-1" data-controller="modal-search" data-modal-search-target="modalSearch" data-action="turbo:frame-load->modal-search#open"]
+/   .modal-dialog
+/     .modal-content
+/       = turbo_frame_tag "modal_search"
+/ #modalPhoto.modal[tabindex="-1" data-controller="modal-photo" data-modal-photo-target="modalPhoto" data-action="turbo:frame-load->modal-photo#open turbo:submit-end->modal-photo#close"]
+/   .modal-dialog
+/     .modal-content
+/       = turbo_frame_tag "modal_photo"

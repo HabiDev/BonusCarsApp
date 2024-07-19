@@ -1,0 +1,3 @@
+= turbo_stream.prepend "resp-table-body", @sub_statement
+= turbo_stream.update("statement_ammount", partial: "statements/ammount", locals: { statement: @statement, ammount: @ammount })
+= render_turbo_stream_flash_messages

@@ -1,0 +1,23 @@
+.row
+  .col-12.col-md-12.text-end
+    - if current_user&.admin?
+      = link_to "#{t('button.new')}",  new_card_path, class: "btn btn-outline-success btn-sm", data: { turbo_frame: "modal_form" }
+  .row 
+    = render 'search_form'
+.row
+  .col-12.col-md-12.mt-3
+    = turbo_frame_tag "cards_list"
+      #resp-table.fixed-table
+        #resp-table-header.tblhead-resp
+          .table-header-cell.col-12.col-md-2
+            = t("#{@cards.model.human_attribute_name(:release_at)}") 
+          .table-header-cell.col-12.col-md-6
+            = t("#{@cards.model.human_attribute_name(:owner_card)}")
+          .table-header-cell.col-12.col-md-2
+            = t("#{@cards.model.human_attribute_name(:balance)}")
+          .table-header-cell.col-12.col-md-2
+            = t("#{@cards.model.human_attribute_name(:locked_at)}")
+        = turbo_frame_tag "resp-table-body"
+          = render @cards
+        / .row.mt-3
+        /   == pagy_bootstrap_nav(@pagy) if @cards&.exists?
