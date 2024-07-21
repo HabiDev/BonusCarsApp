@@ -1,2 +1,5 @@
-= turbo_stream.prepend "resp-table-body", @statement
+/ = turbo_stream.prepend "resp-table-body", @statement
+= turbo_stream.replace "list_statements", ""
+= turbo_stream.replace("show_statement", partial: "statements/show", locals: { statement: @statement, ammount: @ammount })
+= turbo_stream.replace("app_footer", partial: "statements/show_footer", locals: { statement: @statement, ammount: @ammount })
 = render_turbo_stream_flash_messages

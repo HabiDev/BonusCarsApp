@@ -16,12 +16,12 @@ class Statement < ApplicationRecord
   default_scope { order(created_at: :desc, status: :asc) }
 
   def self.ransackable_attributes(auth_object = nil)
-    ["division_id", "item", "id", "create_at", "status", "ammount", 
+    ["division_id", "item", "id", "created_at", "status", "ammount", 
       "comment", "updated_at"]
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["sub_statements"]
+    ["sub_statements", "division"]
   end
 
   private

@@ -5,7 +5,7 @@ class CardsController < ApplicationController
   def index
     # authorize Card
     @q = Card.ransack(params[:q])
-    # @q.sorts = ['owner_card asc', 'created_at desc'] if @q.sorts.empty?
+    @q.sorts = ['owner_card asc', 'release_at desc'] if @q.sorts.empty?
     @cards = @q.result(disinct: true)
     # @pagy, @users = pagy(User.all, items: mobile_device? ? 3 : 10) 
   end

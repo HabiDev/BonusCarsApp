@@ -1,9 +1,12 @@
 class SubStatementsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_statement, only: [ :new, :create, :destroy ]
-  before_action :set_sub_statement, only: [ :update, :destroy, :show, :edit]
+  before_action :set_statement, only: [ :new, :create, :destroy, :edit, :update ]
+  before_action :set_sub_statement, only: [ :update, :destroy, :show, :edit, :update ]
   
   def index
+    # @q = SubStatement.ransack(params[:q])
+    # @q.sorts = ['card_id asc', 'created_at desc'] if @q.sorts.empty?
+    # @sub_tatements = @q.result(disinct: true).includes(:cards, :statement)
   end
 
   def new
@@ -25,6 +28,7 @@ class SubStatementsController < ApplicationController
     respond_to do |format|
       if @sub_statement.save
         @ammount = @statement.sub_statements.sum(:charge_sum)
+        @statement.update!(ammount: @ammount)
         format.html { redirect_to statement_path(@statement), notice: t('notice.record_create') }
         format.turbo_stream { flash.now[:success] = t('notice.record_create') }
       else
@@ -36,8 +40,9 @@ class SubStatementsController < ApplicationController
   def update
     # authorize @card    
     respond_to do |format|
-      if @statement.update(sub_statement_params)
+      if @sub_statement.update(sub_statement_params)
         @ammount = @statement.sub_statements.sum(:charge_sum)
+        @statement.update!(ammount: @ammount)
         format.html { redirect_to statement_path(@statement), notice: t('notice.record_edit') }
         format.turbo_stream { flash.now[:warning] = t('notice.record_edit') }
       else
@@ -50,6 +55,7 @@ class SubStatementsController < ApplicationController
     # authorize @card
     if @sub_statement.destroy
       @ammount = @statement.sub_statements.sum(:charge_sum)
+      @statement.update!(ammount: @ammount)
       respond_to do |format|
         format.html { redirect_to statement_path(@statement), notice: t('notice.record_destroy') }
         format.turbo_stream { flash.now[:danger] = t('notice.record_destroy') }

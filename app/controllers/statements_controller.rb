@@ -6,7 +6,7 @@ class StatementsController < ApplicationController
     # authorize Card
     @q = Statement.ransack(params[:q])
     # @q.sorts = ['owner_card asc', 'created_at desc'] if @q.sorts.empty?
-    @statements = @q.result(disinct: true)
+    @statements = @q.result(disinct: true).includes(:division, :sub_statements)
     # @pagy, @users = pagy(User.all, items: mobile_device? ? 3 : 10) 
   end
 
@@ -29,7 +29,7 @@ class StatementsController < ApplicationController
     # authorize @card  
     respond_to do |format|
       if @statement.save
-        format.html { redirect_to statements_path, notice: t('notice.record_create') }
+        format.html { redirect_to statement_path(@statement), notice: t('notice.record_create') }
         format.turbo_stream { flash.now[:success] = t('notice.record_create') }
       else
         format.html { render :new, status: :unprocessable_entity }

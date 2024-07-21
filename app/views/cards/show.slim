@@ -12,35 +12,35 @@
             span.fw-normal
               = @card.owner_card
           hr.p-0.mt-0
-          .row.mx-1
-            .col-12
-              .h6.fst-italic.fw-bold.text-muted
-                = "#{@card.class.human_attribute_name(:code_card)}:"
-                span.fw-normal.px-3
-                  = @card.code_card
-              .row.mt-4
-                .col-4.text-center
-                  .h6.fst-italic.fw-bold.text-success.small               
-                    = "#{@card.class.human_attribute_name(:release_at)}"
-                  hr.mt-0.text-primary
-                  .row
-                    span.fw-normal.small
-                      = l(@card.release_at, format: :normal)
-                .col-4.text-center
-                  .h6.fst-italic.fw-bold.text-success.small                 
-                    = "#{@card.class.human_attribute_name(:balance)}"
-                  hr.mt-0.text-primary
-                  .row
-                    span.fw-normal.small
-                      = @card.balance
-                .col-4.text-center
-                  .h6.fst-italic.fw-bold.text-success.small                  
-                    = "#{@card.class.human_attribute_name(:default_charge_sum)}"
-                  hr.mt-0.text-primary
-                  .row
-                    span.fw-normal.small.mt-0
-                      = @card.default_charge_sum
-                        .row.mx-1
+          - if current_user.admin?
+            .row.mx-1            
+              .col-12
+                .h6.fst-italic.fw-bold.text-muted
+                  = "#{@card.class.human_attribute_name(:code_card)}:"
+                  span.fw-normal.px-3
+                    = @card.code_card
+          .row.mt-4
+            .col-4.text-center
+              .h6.fst-italic.fw-bold.text-success.small               
+                = "#{@card.class.human_attribute_name(:release_at)}"
+              hr.mt-0.text-primary
+              .row
+                span.fw-normal.small
+                  = l(@card.release_at, format: :normal)
+            .col-4.text-center
+              .h6.fst-italic.fw-bold.text-success.small                 
+                = "#{@card.class.human_attribute_name(:balance)}"
+              hr.mt-0.text-primary
+              .row
+                span.fw-normal.small
+                  = @card.balance
+            .col-4.text-center
+              .h6.fst-italic.fw-bold.text-success.small                  
+                = "#{@card.class.human_attribute_name(:default_charge_sum)}"
+              hr.mt-0.text-primary
+              .row
+                span.fw-normal.small.mt-0
+                  = @card.default_charge_sum
             - if @card.locked_at.present?
               .row
                 .col-12.mt-5

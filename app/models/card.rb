@@ -4,7 +4,7 @@ class Card < ApplicationRecord
 
   validates :owner_card, :code_card, :release_at, presence: true
 
-  default_scope { order(owner_card: :asc) }
+  default_scope { order(owner_card: :asc, release_at: :asc) }
 
 
   def self.ransackable_attributes(auth_object = nil)

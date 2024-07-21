@@ -22,7 +22,6 @@ ru:
           executed: Исполнен,
           delayed: Отложен,
           canceled: Отменен
-
       sub_statement:
         statuses:
           registred: Зарегистрирован
@@ -55,13 +54,13 @@ ru:
         created_at: Дата
         division_id: Подразделения
         comment: Коментария
-        ammount: Сумма ведомости
-        status: Статус ведомости
+        ammount: Итоговая сумма 
+        status: Статус
       sub_statement:
         card_id: Владелец карты
-        charge_sum: Сумма начисления
-        balance_before: Баланс до начис.
-        balance_after: Баланс после начис.
+        charge_sum: Сумма
+        balance_before: Баланс
+        balance_after: Баланс после
         status: Результат
         error_text: Текст ошибки
         comment: Коментария

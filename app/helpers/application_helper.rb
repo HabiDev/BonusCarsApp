@@ -11,9 +11,19 @@ module ApplicationHelper
               executed: 'success',              
               delayed: 'warning',
               canceled: 'dark' }.freeze
+  STASUS_ICON = {  registred: 'bi bi-stopwatch text-primary',  
+              success: 'bi bi-check-lg text-success', 
+              unsuccess: 'bi bi-ban text-danger', 
+              executed: 'bi bi-check-lg text-success',              
+              delayed: 'bi bi-pause-circle text-warning',
+              canceled: 'bi bi-x-octagon text-info' }.freeze
  
   def status_manager(key)
     STASUS[key.to_sym] || key
+  end
+
+  def status_icon(key)
+    STASUS_ICON[key.to_sym] || key
   end
 
   def text_status(resource)

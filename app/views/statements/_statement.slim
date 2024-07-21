@@ -1,26 +1,16 @@
-= turbo_frame_tag statement, class: 'resp-table-row tblbody-resp'
-  .table-body-cell
-    .col-12
-      span.d-block.font-weight-bold
-        = l(statement.created_at, format: :normal)
-  .table-body-cell
-    .col-12
-      span.d-block.font-weight-bold.text-truncate
-        = statement.division.name   
-  .table-body-cell
-    .col-12
-      span.d-block.font-weight-bold.text-truncate
-        = statement.comment  
-  .table-body-cell 
-    .col-12
-      span.d-block.font-weight-bold.text-truncate
-        = statement.ammount
-  .table-body-cell
-    .row
-      .col-10
-        = content_tag(:span, class: "d-block font-weight-bold text-truncate text-#{status_manager(statement.status)}")
-          = text_status(statement)        
-      .col-1
-        span.d-block.font-weight-bold
-          = render "control", statement: statement
+tr id="#{dom_id(statement)}"
+  td.text-truncate
+    = l(statement.created_at, format: :normal)
+  td.text-truncate
+    = statement.division.name
+  td.text-truncate
+    = statement.comment
+  td.text-truncate
+    = number_to_currency(statement.ammount)
+  td.text-truncate.text-center
+    = content_tag(:i, nil, class: status_icon(statement.status))
+  td.text-end.px-3
+    span.d-block.font-weight-bold
+      = render "statements/control", statement: statement   
+
 

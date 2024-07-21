@@ -12,6 +12,8 @@ ru:
     title_list: Перечень сотрудников
   cards:
     title: Бонусные карты
+  statements:
+    title: Ведомость для QR
   resource: 
     create: Создание
     edit: Редактирование

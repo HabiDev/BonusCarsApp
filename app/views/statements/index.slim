@@ -1,4 +1,6 @@
 .container
   .row
     .col-12.col-md-12
-      = render 'list_statements'
+      = turbo_frame_tag "list_statements"
+        = render 'list_statements'
+      = turbo_frame_tag "show_statement", target: "_top"

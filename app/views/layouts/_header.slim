@@ -1,4 +1,4 @@
-nav.navbar.sticky-top.navbar-expand-lg.navbar-dark.bg-dark
+nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark
   .container-fluid
     a.navbar-brand href="#" 
       = t('navbar.brand')
@@ -22,7 +22,7 @@ nav.navbar.sticky-top.navbar-expand-lg.navbar-dark.bg-dark
                 - if current_user&.admin? 
                   = link_to t('cards.title'), cards_path, class: "dropdown-item"
                 - if current_user&.admin? || current_user&.guide? 
-                  = link_to t('cards.title'), statements_path, class: "dropdown-item"
+                  = link_to t('statements.title'), statements_path, class: "dropdown-item"
                 / - if current_user.admin?
                 /   = link_to t('users.title'), users_path, class: "dropdown-item"                
           li.nav-item

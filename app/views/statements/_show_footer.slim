@@ -1,0 +1,7 @@
+= turbo_frame_tag "app_footer"
+  .row
+    .col-10.align-center.text-primary
+      = turbo_frame_tag "statement_ammount"
+        = render "ammount", statement: @statement, ammount:  @statement.ammount
+    .col-2.text-end
+      = link_to t('button.close'), statements_path, class: "btn btn-outline-primary mb-2", target: "_top"

@@ -1,25 +1,31 @@
 .row
-  .col-12.col-md-12.text-end
+  .col-12.text-end
     - if current_user&.admin? || current_user&.guide?
       = link_to "#{t('button.new')}",  new_statement_path, class: "btn btn-outline-success btn-sm", data: { turbo_frame: "modal_form" }
-  .row 
+  .row.mt-2.p-0.mx-0
     = render 'search_form'
+  hr.mb-0
 .row
-  .col-12.col-md-12.mt-3
-    = turbo_frame_tag "cards_list"
-      #resp-table.fixed-table
-        #resp-table-header.tblhead-resp
-          .table-header-cell.col-12.col-md-2
-            = t("#{@statements.model.human_attribute_name(:created_at)}") 
-          .table-header-cell.col-12.col-md-3
-            = t("#{@statements.model.human_attribute_name(:division_id)}")
-          .table-header-cell.col-12.col-md-3
-            = t("#{@statements.model.human_attribute_name(:comment)}")
-          .table-header-cell.col-12.col-md-2
-            = t("#{@statements.model.human_attribute_name(:ammount)}")
-          .table-header-cell.col-12.col-md-2
-            = t("#{@statements.model.human_attribute_name(:status)}")
-        = turbo_frame_tag "resp-table-body"
-          = render @statements
-        / .row.mt-3
-        /   == pagy_bootstrap_nav(@pagy) if @cards&.exists?
+  .col-12.mt-3
+    = turbo_frame_tag "statements_list"
+      .container
+        .fixed-header
+          table.table
+              thead.thead      
+                tr
+                  th
+                    = t("#{@statements.model.human_attribute_name(:created_at)}")           
+                  th
+                    = t("#{@statements.model.human_attribute_name(:division_id)}")
+                  th
+                    = t("#{@statements.model.human_attribute_name(:comment)}")
+                  th
+                    = t("#{@statements.model.human_attribute_name(:ammount)}")
+                  th.text-center
+                    = t("#{@statements.model.human_attribute_name(:status)}")
+                  th.text-end.font-weight-bold.px-3
+                    i.bi.bi-grip-vertical
+              tbody id="resp-table-body"
+                = render @statements
+                / .row.mt-3
+                /   == pagy_bootstrap_nav(@pagy) if @cards&.exists?

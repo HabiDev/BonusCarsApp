@@ -1,22 +1,16 @@
-= turbo_frame_tag card, class: 'resp-table-row tblbody-resp'
-  .table-body-cell
-    .col-12
-      span.small.d-block.font-weight-bold
-        = l(card.release_at, format: :normal)
-  .table-body-cell
-    .col-12
-      span.small.d-block.font-weight-bold.text-truncate
-        = card.owner_card   
-  .table-body-cell 
-    .col-12
-      span.small.d-block.font-weight-bold.text-truncate
-        = card.balance
-  .table-body-cell
-    .col-11
-      span.small.d-block.font-weight-bold.text-truncate
-        = l(card.locked_at, format: :normal) if card.locked_at.present?
-      .col-12.mx-3
-        span.d-block.font-weight-bold
-          = render "control", card: card
-
+tr id="#{dom_id(card)}"
+  td.text-truncate
+    = l(card.release_at, format: :normal)
+  td.text-truncate
+    = card.owner_card
+  td.text-truncate
+    = link_to "#" do
+      i.bi.bi-arrow-clockwise.text-prinary
+    span.mx-2.text-end
+      = card.balance 
+  td.text-truncate
+    = l(card.locked_at, format: :normal) if card.locked_at.present?
+  td.text-end.px-3
+    span.d-block.font-weight-bold
+      = render "cards/control", card: card
 
