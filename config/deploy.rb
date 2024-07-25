@@ -12,7 +12,7 @@ set :rvm_ruby_version, '3.1.1'
 set :rvm_ruby_string, fetch(:rvm_ruby_version)
 
 set :application, "BonusCardApp"
-set :repo_url, "https://github.com/HabiDev/BonusCardApp.git"
+set :repo_url, "git@github.com:HabiDev/BonusCarsApp.git"
 set :deploy_to, "/var/www/apps/#{fetch(:application)}"
 
 # Tell to Capistrano about a 'foreman' gem.
