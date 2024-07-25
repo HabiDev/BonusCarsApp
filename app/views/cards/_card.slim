@@ -3,11 +3,11 @@ tr id="#{dom_id(card)}"
     = l(card.release_at, format: :normal)
   td.text-truncate
     = card.owner_card
-  td.text-truncate
-    = link_to "#" do
+  td 
+    = link_to get_card_active_bonus_path(card_id: card)  do
       i.bi.bi-arrow-clockwise.text-prinary
     span.mx-2.text-end
-      = card.balance 
+      = number_to_currency(card.balance)
   td.text-truncate
     = l(card.locked_at, format: :normal) if card.locked_at.present?
   td.text-end.px-3

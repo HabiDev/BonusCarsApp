@@ -68,6 +68,10 @@ gem 'ransack'
 
 gem 'pry', '~> 0.13.1'
 
+gem "savon"
+
+# gem 'httpclient'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -82,6 +86,15 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+
+  gem 'sshkit-sudo'
+
 end
 
 group :test do

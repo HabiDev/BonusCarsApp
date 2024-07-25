@@ -4,10 +4,10 @@ tr id="#{dom_id(sub_statement)}"
   td.text-truncate
     = number_to_currency(sub_statement.charge_sum)
   td.text-truncate
-    = link_to "#" do
+    = link_to get_balance_before_active_bonus_path(sub_statement_id: sub_statement) do
       i.bi.bi-arrow-clockwise.text-primary 
-    span.mx-2.text-end
-      = sub_statement.balance_before
+    span.mx-2
+      = number_to_currency(sub_statement.balance_before)
   td.text-truncate
     = sub_statement.comment
   td.text-truncate.text-center

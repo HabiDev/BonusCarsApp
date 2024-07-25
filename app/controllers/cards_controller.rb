@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_card, except: [ :index, :new, :create]
+  before_action :set_card, except: [ :index, :new, :create, :get_active_bonus]
 
   def index
     # authorize Card

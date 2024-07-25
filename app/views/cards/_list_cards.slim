@@ -13,18 +13,18 @@
           table.table
               thead.thead
                 tr
-                  th.text-dark
-                    = sort_link(@q, :release_at, class: 'd-block text-decoration-none text-dark')
-                    / = t("#{@cards.model.human_attribute_name(:release_at)}") 
-                  th.text-dark
-                    = sort_link(@q, :owner_card, class: 'd-block text-decoration-none text-dark')
-                    / = t("#{@cards.model.human_attribute_name(:owner_card)}")
-                  th.text-dark
-                    = sort_link(@q, :balance, class: 'd-block text-decoration-none text-dark')
-                    / = t("#{@cards.model.human_attribute_name(:balance)}")
-                  th.text-dark
+                  th
+                    / = sort_link(@q, :release_at, class: 'd-block text-decoration-none text-dark')
+                    = t("#{@cards.model.human_attribute_name(:release_at)}") 
+                  th
+                    / = sort_link(@q, :owner_card, class: 'd-block text-decoration-none text-dark')
+                    = t("#{@cards.model.human_attribute_name(:owner_card)}")
+                  th
+                    / = sort_link(@q, :balance, class: 'd-block text-decoration-none text-dark')
+                    = t("#{@cards.model.human_attribute_name(:balance)}")
+                  th
                     = t("#{@cards.model.human_attribute_name(:locked_at)}")
-                  th.text-end.font-weight-bold.px-3.text-dark
+                  th.text-end.font-weight-bold.px-3
                     i.bi.bi-grip-vertical
               tbody id="resp-table-body"
                 = render @cards
