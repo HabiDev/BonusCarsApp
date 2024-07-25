@@ -70,6 +70,10 @@ gem 'pry', '~> 0.13.1'
 
 gem "savon"
 
+gem "ed25519"
+
+gem "bcrypt_pbkdf"
+
 # gem 'httpclient'
 
 group :development, :test do
