@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   end
 
   get :get_card_active_bonus, to: 'bonus_services#get_card_active_bonus', defaults: { format: :turbo_stream }
-  get :get_balance_before_active_bonus, to: 'bonus_services#get_balance_before_active_bonus', defaults: { format: :turbo_stream }
+  get :get_statement_bonus, to: 'bonus_services#get_statement_bonus', defaults: { format: :turbo_stream }
 
 end

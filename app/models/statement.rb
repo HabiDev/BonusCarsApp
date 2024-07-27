@@ -3,10 +3,10 @@ class Statement < ApplicationRecord
 
   enum status: { registred: 0, 
                  success: 1, 
-                 unsuccess: 3, 
-                 executed: 4,
-                 delayed: 5,
-                 canceled: 6 }
+                 unsuccess: 2, 
+                 executed: 3,
+                 delayed: 4,
+                 canceled: 5 }
 
   belongs_to :division, optional: true
   has_many :sub_statements, dependent: :destroy

@@ -1,13 +1,11 @@
 tr id="#{dom_id(sub_statement)}"
   td.text-truncate
     = sub_statement.card.owner_card
+    - if sub_statement.statement.statement_at.present?
+      span.d-block.text-success.small
+        = "Баланс до: #{number_to_currency(sub_statement.balance_before)} Баланс после: #{number_to_currency(sub_statement.balance_after)}"
   td.text-truncate
     = number_to_currency(sub_statement.charge_sum)
-  td.text-truncate
-    = link_to get_balance_before_active_bonus_path(sub_statement_id: sub_statement) do
-      i.bi.bi-arrow-clockwise.text-primary 
-    span.mx-2
-      = number_to_currency(sub_statement.balance_before)
   td.text-truncate
     = sub_statement.comment
   td.text-truncate.text-center

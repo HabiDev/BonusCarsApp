@@ -27,3 +27,16 @@ ru:
         many: "Выявлено %{count} ошибок"
         one: "Выявлено %{count} ошибка"
         other: "Выявлено %{count} ошибок"
+  bonus_charge_errors:
+    CARD_NOT_FOUND_ERROR: Карта не найдена.
+    INCORRECT_CARD_ARGUMENT_ERROR: Неправильный номер карты.
+    INCORRECT_CHECK_UID_ARGUMENTS_ERROR: Неправильный идентификатор (номер) чека.
+    INCORRECT_ACCRUAL_SUM_ARGUMENT_ERROR: Неправильный формат суммы начилсения.
+    INCORRECT_EXPIRATION_DATE_ARGUMENT_ERROR: Неправильная дата окончания действия.
+    NO_ACTIVE_ACCOUNTS_FOR_CARD_ERROR: Нет активных бонусных счетов для этой карты.
+    BONUS_CHARGE_ERROR: Ошибка начисления бонусов.
+    BONUS_CANCEL_CHARGE_ERROR: Ошибка отмены начисления бонуснов.
+    INCORRECT_CANCEL_SUM_ARGUMENT_ERROR: Некорректный формат суммы начисления.
+    IN_PROCESS: Операция в работе.
+    INCORRECT_EXTERNAL_CODE: Некорректный код из внешней системы (для этого кода нет ни одной операции).
+

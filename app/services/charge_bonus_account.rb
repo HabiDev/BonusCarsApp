@@ -1,21 +1,20 @@
 class ChargeBonusAccount < ApplicationService
 
-  def initialize(cardNumber, shopNum, cashNum, shiftNum, checkNum, chargeSum, 
-                 activatingDate, expirationDate)
+  def initialize(cardNumber,chargeSum)
 
     @wsdl = 'http://192.168.116.81:8090/SET-Cards/SET/Cards/ExternalSystemCardsProcessing?wsdl'
     @card_number = cardNumber
-    @shopNum = shopNum
-    @cashNum = cashNum
-    @shiftNum = shiftNum 
-    @checkNum = checkNum
-    @chargeSum = chargeSum
-    @activatingDate = activatingDate
-    @expirationDate = expirationDate
+    @shopNum = '150'
+    @cashNum = '1'
+    @shiftNum = '1' 
+    @checkNum = '1'
+    @chargeSum = chargeSum * 100
+    @activatingDate = (Date.current).to_s
+    @expirationDate = ((3.year.since).to_date).to_s
   end
 
   def call
-    get_carge_bonus
+    get_carge_bonus[:return]
   end
 
   private
@@ -32,6 +31,5 @@ class ChargeBonusAccount < ApplicationService
                                                                 expirationDate: @expirationDate })    
     response.to_array(:charge_on_bonus_account_response).first
   end
-
 
 end

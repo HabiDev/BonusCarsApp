@@ -1,0 +1,5 @@
+/ = turbo_stream.replace("list_sub_statements", partial: "sub_statements/list_sub_statements", locals: { sub_statements: @sub_statements })
+= turbo_stream.replace("show_statements", partial: "statements/show", locals: { statement: @statement, ammount: @statement.ammount })
+/ = turbo_stream.replace("app_footer", partial: "statements/show_footer")
+/ = turbo_stream.replace("balnace_#{dom_id(@card)}", partial: "cards/balance_card", locals: { card: @card })
+= render_turbo_stream_flash_messages

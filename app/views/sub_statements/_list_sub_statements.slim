@@ -10,11 +10,9 @@
             th
               = t("#{sub_statements.model.human_attribute_name(:charge_sum)}")
             th
-              = t("#{sub_statements.model.human_attribute_name(:balance_before)}")
-            th
               = t("#{sub_statements.model.human_attribute_name(:comment)}")
             th.text-center
-              = t("#{sub_statements.model.human_attribute_name(:status)}")
+              = t("#{sub_statements.model.human_attribute_name(:status)}")            
             th.text-end.font-weight-bold.px-3
               i.bi.bi-grip-vertical
         tbody id="resp-table-body"

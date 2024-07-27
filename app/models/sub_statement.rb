@@ -1,6 +1,6 @@
 class SubStatement < ApplicationRecord
 
-  enum status: { registred: 0, success: 1, unsuccess: 3 }
+  enum status: { registred: 0, success: 1, unsuccess: 2 }
 
   belongs_to :statement
   belongs_to :card

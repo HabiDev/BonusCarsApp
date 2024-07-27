@@ -19,20 +19,39 @@ class BonusServicesController < ApplicationController
     end
   end
 
-  def get_balance_before_active_bonus   
-    @sub_statement = SubStatement.find(params[:sub_statement_id])
-    @statement =  @sub_statement.statement
-    bonus_before = ActiveBonus.call(@sub_statement.card.code_card)
-    if bonus_before.present?
-      respond_to do |format|
-        if @sub_statement.update(balance_before:  bonus_before)
-          format.turbo_stream { flash.now[:notice] = t('notice.balance_refresh') }
+  def get_statement_bonus   
+    @statement = Statement.find(params[:statement_id])
+    @sub_statements = @statement.sub_statements
+    errors_count = 0
+
+    if @sub_statements.present?
+      
+      @sub_statements.each do |sub_statement|
+
+        before_balance = ActiveBonus.call(sub_statement.card.code_card)
+        charge_bonus = ChargeBonusAccount.call(sub_statement.card.code_card, sub_statement.charge_sum)
+        after_balance = ActiveBonus.call(sub_statement.card.code_card)
+        
+        if charge_bonus[:error_code] == "0"
+          sub_statement.update!(balance_before: before_balance, balance_after: after_balance, status: 1)
         else
-          format.turbo_stream { flash.now[:error] = t('notice.record_update_errors') }
+          error_text = t("bonus_charge_errors.#{charge_bonus[:error_text]}")
+          sub_statement.update!(balance_before: before_balance, balance_after: after_balance, status: 3, error_text: error_text)
+          errors_count += 1
         end
       end
+
+      if @statement.update(statement_at: DateTime.now, status: errors_count > 0 ? 2 : 1)
+        respond_to do |format|
+          # format.turbo_stream { flash.now[:notice] =  errors_count > 0 ? t('notice.statement_success_errors', errors: errors_count) : t('notice.statement_success') }
+          format.turbo_stream { flash.now[:notice] = t('notice.statement_success') }
+        end
+      else
+        format.turbo_stream { flash.now[:error] = t('notice.statement_unsuccess') }
+      end
+
     else
-      flash.now[:error] = t('notice.card_not_found')
+      flash.now[:error] = t('notice.sub_statement_not_present')
     end
   end
   

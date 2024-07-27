@@ -6,7 +6,9 @@ class ActiveBonus < ApplicationService
   end
 
   def call
-    get_active_bonus_params
+    if get_active_bonus[:return].present?
+      get_active_bonus[:return][:balance]
+    end
   end
 
   private

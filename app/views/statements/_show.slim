@@ -12,8 +12,9 @@
           hr.mb-0
     .row
       .col-12.text-end
-        - if current_user&.admin? || current_user&.guide?
-          = link_to "#{t('button.new')}",  new_statement_sub_statement_path(@statement.id), class: "btn btn-outline-success btn-sm", data: { turbo_frame: "modal_form" }
+        = turbo_frame_tag "panel_statements"
+         = render "statements/panel_buttons", statement: @statement
     .row
       .col-12.col-md-12.mt-3
-        = render "sub_statements/list_sub_statements", sub_statements: @statement.sub_statements
+        = turbo_frame_tag "show_sub_statements"
+          = render "sub_statements/list_sub_statements", sub_statements: @statement.sub_statements
