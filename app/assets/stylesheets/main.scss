@@ -58,9 +58,10 @@ main {
   overflow-y: auto; /* Активируем прокрутку */
 }
 .fixed-header tbody {
-  display: block; /* Переключаем на блочное отображение */
+  // display: block; /* Переключаем на блочное отображение */
   // height: 800px; /* Задаём высоту области прокрутки */
   overflow-y: auto; /* Добавляем возможность прокрутки */
+  display: table-row-group;
 }
 
 .form-group .icon {
@@ -110,5 +111,15 @@ main {
 }
 
 .myAlert {
+  z-index: 1000;
+}
+
+.main-spenner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
   z-index: 10000;
+  opacity: 0.4;
 }

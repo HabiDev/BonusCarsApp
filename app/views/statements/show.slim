@@ -1,2 +1,3 @@
-= render 'statements/show', statement: @statement, ammount: @ammount
+.content_sub_statemets[data-action="turbo:before-fetch-request@document->my-loading#displayLoading turbo:before-fetch-response@document->my-loading#displayContent"]
+  = render 'statements/show', statement: @statement, ammount: @ammount
 = turbo_stream.replace("app_footer", partial: "statements/show_footer")

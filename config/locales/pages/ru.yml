@@ -39,4 +39,4 @@ ru:
     INCORRECT_CANCEL_SUM_ARGUMENT_ERROR: Некорректный формат суммы начисления.
     IN_PROCESS: Операция в работе.
     INCORRECT_EXTERNAL_CODE: Некорректный код из внешней системы (для этого кода нет ни одной операции).
-
+    

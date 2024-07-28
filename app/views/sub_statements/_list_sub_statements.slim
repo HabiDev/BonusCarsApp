@@ -1,20 +1,20 @@
-= turbo_frame_tag "sub_statements"
-  .container
-    .fixed-header
-      / .table-responsive-sm
-      table.table
-        thead.table-primary.thead      
-          tr
-            th
-              = t("#{sub_statements.model.human_attribute_name(:card_id)}") 
-            th
-              = t("#{sub_statements.model.human_attribute_name(:charge_sum)}")
-            th
-              = t("#{sub_statements.model.human_attribute_name(:comment)}")
-            th.text-center
-              = t("#{sub_statements.model.human_attribute_name(:status)}")            
-            th.text-end.font-weight-bold.px-3
-              i.bi.bi-grip-vertical
-        tbody id="resp-table-body"
-          = render sub_statements
+.container
+  .fixed-header   
+    / .table-responsive-sm    
+    table.table
+      thead.table-primary.thead      
+        tr
+          th
+            = t("#{sub_statements.model.human_attribute_name(:card_id)}") 
+          th
+            = t("#{sub_statements.model.human_attribute_name(:charge_sum)}")
+          th
+            = t("#{sub_statements.model.human_attribute_name(:comment)}")
+          th.text-center
+            = t("#{sub_statements.model.human_attribute_name(:status)}")            
+          th.text-end.font-weight-bold.px-3
+            i.bi.bi-grip-vertical        
+        tbody#body-sub-statements
+          = turbo_frame_tag "edit_state"
+            = render sub_statements
 

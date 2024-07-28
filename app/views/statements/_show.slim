@@ -1,5 +1,6 @@
 = turbo_frame_tag "show_statements"
-  .container
+  .container[data-controller="my-loading"]
+    = render 'shared/loading_data' 
     .row     
       .col-12
         .h5.text-muted
@@ -13,8 +14,8 @@
     .row
       .col-12.text-end
         = turbo_frame_tag "panel_statements"
-         = render "statements/panel_buttons", statement: @statement
+          = render "statements/panel_buttons", statement: @statement
     .row
       .col-12.col-md-12.mt-3
-        = turbo_frame_tag "show_sub_statements"
+        = turbo_frame_tag "sub_statements", data: { "my-loading-target": "content" }
           = render "sub_statements/list_sub_statements", sub_statements: @statement.sub_statements

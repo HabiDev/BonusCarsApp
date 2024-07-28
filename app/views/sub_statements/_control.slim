@@ -6,6 +6,5 @@ h5.text-end
       - if current_user.admin? || current_user.guide?
       li
         = link_to t('button.edit'), edit_statement_sub_statement_path(@statement.id, sub_statement), class: "dropdown-item", data: { turbo_frame: "modal_form" }
-      - if current_user.admin?
         li
           = link_to t('button.destroy'), statement_sub_statement_path(@statement.id, sub_statement), data: { turbo_confirm: t('notice.confirm'), turbo_method: :delete }, class: "dropdown-item" 

@@ -6,6 +6,7 @@ class SubStatement < ApplicationRecord
   belongs_to :card
 
   validates :statement_id, :card_id, :charge_sum, presence: true
+  validates :charge_sum, numericality: { greater_than: 0 }
 
   default_scope { order(created_at: :desc, status: :asc) }
 

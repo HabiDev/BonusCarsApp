@@ -10,5 +10,11 @@ application.register("flatpickr", FlatpickrController)
 import MyModalController from "./my_modal_controller"
 application.register("my-modal", MyModalController)
 
-import FlashController from "./flash_controller.js"
+import MyLoadingController from "./my_loading_controller"
+application.register("my-loading", MyLoadingController)
+
+import SubStatementController from "./sub_statement_controller"
+application.register("sub-statement", SubStatementController)
+
+import FlashController from "./flash_controller"
 application.register("flash", FlashController)

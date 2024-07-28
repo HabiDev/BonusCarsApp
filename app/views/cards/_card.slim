@@ -3,9 +3,11 @@ tr id="#{dom_id(card)}"
     = l(card.release_at, format: :normal)
   td.text-truncate
     = card.owner_card
-  td 
-    = link_to get_card_active_bonus_path(card_id: card)  do
-      i.bi.bi-arrow-clockwise.text-prinary
+  td id="balance_#{card.id}"
+    = link_to get_card_active_bonus_path(card_id: card),
+         data: { data_frame: "cards", action: "turbo:click->my-loading#displayCardsLoading",
+                  my_loading_balance_value: card.id } do
+      i.bi.bi-arrow-clockwise.text-prinary 
     span.mx-2.text-end
       = number_to_currency(card.balance)
   td.text-truncate
