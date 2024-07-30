@@ -28,7 +28,7 @@
                       = t("#{@cards.model.human_attribute_name(:locked_at)}")
                     th.text-end.font-weight-bold.px-3
                       i.bi.bi-grip-vertical       
-                tbody#body-sub-statements[data-my-loading-target="contentCards" ]
+                tbody#body-cards[data-my-loading-target="contentCards" ]
                   = render @cards
                   / .row.mt-3
                   /   == pagy_bootstrap_nav(@pagy) if @cards&.exists?

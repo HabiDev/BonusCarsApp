@@ -26,7 +26,10 @@ ru:
         statuses:
           registred: Зарегистрирован
           success: Успешно
-          unsuccess: Неудачно           
+          unsuccess: Неудачно 
+          executed: Исполнен,
+          delayed: Отложен,
+          canceled: Отменен          
     models:
       user: Сотрудник
       profile: Профиль

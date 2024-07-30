@@ -49,6 +49,25 @@ class StatementsController < ApplicationController
     end
   end
 
+  def copy
+    @statement_copy = Statement.new(item: @statement.item, division: @statement.division, 
+                                    ammount: @statement.ammount, status: 0, 
+                                    comment: @statement.comment)
+    respond_to do |format|
+      if @statement_copy.save
+        if @statement.sub_statements.present?
+          @statement.sub_statements.each do |sub_statement|
+            @statement_copy.sub_statements.create!(card: sub_statement.card, charge_sum: sub_statement.charge_sum, comment: sub_statement.comment, status: 0) 
+          end
+        end
+  
+        format.turbo_stream { flash.now[:success] = t('notice.copy_record_create') }
+      else
+        flash.now[:error] = t('notice.copy_record_unsuccess')
+      end
+    end
+  end
+
   def destroy
     # authorize @card
     if @statement.destroy

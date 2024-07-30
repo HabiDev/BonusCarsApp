@@ -28,7 +28,7 @@ class Statement < ApplicationRecord
 
   def set_number_statement
     if self.new_record?
-      Statement.last.present? ? number = Statement.last.id + 1 : number = 1
+      Statement.first.present? ? number = Statement.first.id + 1 : number = 1
       self.item = "#{number}/#{Date.today.year}" 
     end
   end

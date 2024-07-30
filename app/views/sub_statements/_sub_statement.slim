@@ -2,7 +2,7 @@ tr id="#{dom_id(sub_statement)}"
   td.text-truncate
     = sub_statement.card.owner_card
     - if sub_statement.statement.statement_at.present?
-      - if sub_statement.status == 1
+      - if sub_statement.success? || sub_statement.canceled?
         span.d-block.text-success.small
           = "Баланс до: #{number_to_currency(sub_statement.balance_before)} Баланс после: #{number_to_currency(sub_statement.balance_after)}"
       - else 

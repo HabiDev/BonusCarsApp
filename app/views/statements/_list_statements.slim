@@ -14,18 +14,18 @@
               thead.thead      
                 tr
                   th
-                    = t("#{@statements.model.human_attribute_name(:created_at)}")           
+                    = t("#{@statements.model.human_attribute_name(:item)}") 
+                  th
+                    = t("#{@statements.model.human_attribute_name(:created_at)}")                           
                   th
                     = t("#{@statements.model.human_attribute_name(:division_id)}")
-                  th
-                    = t("#{@statements.model.human_attribute_name(:comment)}")
                   th
                     = t("#{@statements.model.human_attribute_name(:ammount)}")
                   th.text-center
                     = t("#{@statements.model.human_attribute_name(:status)}")
                   th.text-end.font-weight-bold.px-3
                     i.bi.bi-grip-vertical
-              tbody#body-sub-statements
+              tbody#body-statements
                 = render @statements
                 / .row.mt-3
                 /   == pagy_bootstrap_nav(@pagy) if @cards&.exists?

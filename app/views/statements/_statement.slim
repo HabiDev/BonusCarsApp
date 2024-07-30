@@ -1,10 +1,10 @@
 tr id="#{dom_id(statement)}"
   td.text-truncate
-    = l(statement.created_at, format: :normal)
+    = statement.item
+  td.text-truncate
+    = l(statement.created_at, format: :normal)  
   td.text-truncate
     = statement.division.name
-  td.text-truncate
-    = statement.comment
   td.text-truncate
     = number_to_currency(statement.ammount)
   td.text-truncate.text-center

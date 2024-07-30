@@ -1,9 +1,18 @@
- - if (current_user&.admin? || current_user&.guide?) & (!statement.statement_at.present?)
-    - if statement.sub_statements.present?
+  - if (current_user&.admin? || current_user&.guide?) & (!statement.statement_at.present? || (statement.statement_at.present? & statement.canceled?))
+    - if statement&.sub_statements.present?
       = link_to "#{t('button.statement')}", get_statement_bonus_path(statement_id: statement.id), 
           class: "btn btn-outline-primary btn-sm mx-3", 
           data: { turbo_frame: "show_statements", 
-                  action: "turbo:click->my-loading#displayLoading" }
+                  action: "turbo:click->my-loading#displayLoading",
+                  turbo_confirm: t('notice.confirm_statement') }
+
     = link_to "#{t('button.new')}",  new_statement_sub_statement_path(statement.id), 
         class: "btn btn-outline-success btn-sm", 
         data: { turbo_frame: "modal_form" }
+
+  - if (current_user&.admin? || current_user&.guide?) & (statement&.sub_statements.present? & (statement.success? || statement.unsuccess?))
+    = link_to "#{t('button.cancel_statement')}", get_cancel_statement_bonus_path(statement_id: statement.id), 
+        class: "btn btn-outline-primary btn-sm mx-3", 
+        data: { turbo_frame: "show_statements", 
+                action: "turbo:click->my-loading#displayLoading",
+                turbo_confirm: t('notice.confirm_cancel_statement') }

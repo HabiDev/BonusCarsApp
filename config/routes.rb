@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   resources :cards 
 
   resources :statements  do
+    patch :copy, on: :member, defaults: { format: :turbo_stream }
     resources :sub_statements
   end
 
   get :get_card_active_bonus, to: 'bonus_services#get_card_active_bonus', defaults: { format: :turbo_stream }
   get :get_statement_bonus, to: 'bonus_services#get_statement_bonus', defaults: { format: :turbo_stream }
+  get :get_cancel_statement_bonus, to: 'bonus_services#get_cancel_statement_bonus', defaults: { format: :turbo_stream }
 
 end
