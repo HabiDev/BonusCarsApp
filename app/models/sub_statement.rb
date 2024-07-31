@@ -18,4 +18,28 @@ class SubStatement < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     ["statement"]
   end
+
+  def self.import(file, parrent)
+    accessible_attributes = ['statement_id', 'card_id','charge_sum']
+    spreadsheet = open_spreadsheet(file)
+    header = ['statement_id', 'card_id','charge_sum']
+    (2..spreadsheet.last_row).each do |i|
+      card = Card.find_by(code_card: spreadsheet.cell(i, 1))
+      next unless card.present?
+      data = [parrent.to_i, card.id, spreadsheet.cell(i, 2)]
+      row = Hash[[header, data].transpose]
+      sub_statement = new
+      sub_statement.attributes = row.to_hash.slice(*accessible_attributes)
+      sub_statement.save
+    end
+  end
+  
+  def self.open_spreadsheet(file)
+    case File.extname(file.original_filename)
+    when ".csv" then Roo::Csv.new(file.path, nil, :ignore)
+    when ".xls" then Roo::Excel.new(file.path, nil, :ignore)
+    when ".xlsx" then Roo::Excelx.new(file.path)
+    else raise "Unknown file type: #{file.original_filename}"
+    end
+  end
 end

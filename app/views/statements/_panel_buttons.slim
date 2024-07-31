@@ -6,9 +6,15 @@
                   action: "turbo:click->my-loading#displayLoading",
                   turbo_confirm: t('notice.confirm_statement') }
 
+    = link_to "#{t('button.import')}", statement_import_file_path(statement.id), 
+                class: "btn btn-outline-info btn-sm mx-4", 
+                data: { turbo_frame: "modal_form" }
+
     = link_to "#{t('button.new')}",  new_statement_sub_statement_path(statement.id), 
         class: "btn btn-outline-success btn-sm", 
         data: { turbo_frame: "modal_form" }
+    
+
 
   - if (current_user&.admin? || current_user&.guide?) & (statement&.sub_statements.present? & (statement.success? || statement.unsuccess?))
     = link_to "#{t('button.cancel_statement')}", get_cancel_statement_bonus_path(statement_id: statement.id), 

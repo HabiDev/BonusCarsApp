@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_card, except: [ :index, :new, :create, :get_active_bonus]
+  before_action :set_card, except: [ :index, :new, :create, :get_active_bonus, :import, :import_file ]
 
   def index
     # authorize Card
@@ -59,6 +59,17 @@ class CardsController < ApplicationController
       flash.now[:error] = t('notice.record_destroy_errors')
     end
   end
+
+  def import
+    if params[:file].present?
+      Card.import(params[:file])
+      flash.now[:notice] = t('notice.record_imported')
+    else
+      flash.now[:error] = t('notice.record_imported_error')
+    end
+  end
+
+  def import_file; end
 
   private
 

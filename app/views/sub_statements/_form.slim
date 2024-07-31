@@ -2,7 +2,8 @@
   = f.error_notification
   .row
     .col-12.col-md-8
-      = f.input :card_id, collection: Card.all, label_method: :owner_card, value_method: :id, required: true, autofocus: true, class: 'form-control form-control-sm'
+      = f.input :card_id, collection: Card.active, label_method: :owner_card, value_method: :id, label: "Владелец карты", input_html: { id: "select-card-sub-statement", class: "form-control form-control-sm", data: { controller: "select2", placeholder: t('simple_form.prompt'), theme: 'bootstrap-5' } }
+      / = f.input :card_id, collection: Card.all, label_method: :owner_card, value_method: :id, required: true, autofocus: true, class: 'form-control form-control-sm'
     .col-12.col-md-4  
       = f.input :charge_sum, required: true, autofocus: true, class: 'form-control form-control-sm' 
   .row

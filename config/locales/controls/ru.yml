@@ -23,6 +23,7 @@ ru:
     statement: Провести начесления  
     cancel_statement: Отменить начесления
     copy: Создать новую(с копированием текущей)
+    import: Импорт(xls)
   submit:
     create: Создать
     update: Обновить
@@ -46,6 +47,8 @@ ru:
     record_edit: Запись откоректировано.
     record_destroy_errors: Запись не может быть удалена. Иммеются связанные записи.
     record_update_errors: Запись не обновлена.
+    record_imported: Импорт данных прошла успешно.
+    record_imported_error: Импорт данных не успешен.
     card_not_found: По данной карта нет данных.
     E500: Сервер не доступен!
     sub_statement_not_present: Ведосмость начисления пустая!

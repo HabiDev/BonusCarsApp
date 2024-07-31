@@ -1,0 +1,4 @@
+/ = turbo_stream.prepend "sub_statements", @statement.sub_statements
+= turbo_stream.replace("show_statements", partial: "statements/show", locals: { statement: @statement, ammount: @statement.ammount })
+= turbo_stream.update("app_footer", partial: "statements/show_footer")
+= render_turbo_stream_flash_messages

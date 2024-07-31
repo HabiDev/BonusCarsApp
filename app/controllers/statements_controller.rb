@@ -1,6 +1,6 @@
 class StatementsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_statement, except: [ :index, :new, :create]
+  before_action :set_statement, except: [ :index, :new, :create, :import, :import_file]
 
   def index
     # authorize Card
@@ -79,6 +79,19 @@ class StatementsController < ApplicationController
       flash.now[:error] = t('notice.record_destroy_errors')
     end
   end
+
+  def import
+    if params[:statement_id].present? & params[:file].present?
+      @statement = Statement.find(params[:statement_id])
+      SubStatement.import(params[:file], params[:statement_id])
+      @statement.update!(ammount: @statement.sub_statements.sum(:charge_sum))
+      flash.now[:notice] = t('notice.record_imported')
+    else
+      flash.now[:error] = t('notice.record_imported_error')
+    end
+  end
+
+  def import_file; end
 
   private
 

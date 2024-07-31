@@ -1,0 +1,11 @@
+.container
+  = turbo_frame_tag "modal_form"
+    .modal-header
+      h3#modalNewEditLabel.modal-title
+        = t('resource.edit') 
+      button.btn-close[type="button" data-bs-dismiss="modal" aria-label="Close"]       
+    .modal-body
+      = form_with url: statement_import_path, method: :post do |f|
+        = f.file_field :file
+        / = f.input :file, as: :file, input_html: { class: 'form-control', multiple: true, direct_upload: true, include_hidden: false }
+        = f.submit "Import" 

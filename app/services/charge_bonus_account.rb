@@ -32,9 +32,9 @@ class ChargeBonusAccount < ApplicationService
                                                                   expirationDate: @expirationDate })    
       charge_bonus = response.to_array(:charge_on_bonus_account_response).first
       if charge_bonus[:return].present?
-        @result[:return] = charge_bonus[:return]
+        @result = charge_bonus[:return]
       else
-        @result[:return] = nil
+        @result = nil
       end
     else
       @result[:error_server] = "E500"

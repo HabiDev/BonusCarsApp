@@ -1,7 +1,8 @@
 .row
   .col-12.col-md-12.text-end
     - if current_user&.admin?
-      = link_to "#{t('button.new')}",  new_card_path, class: "btn btn-outline-success btn-sm", data: { turbo_frame: "modal_form" }
+      = link_to "#{t('button.import')}", import_file_cards_path, class: "btn btn-outline-primary btn-sm mx-4", data: { turbo_frame: "modal_form" }
+      = link_to "#{t('button.new')}", new_card_path, class: "btn btn-outline-success btn-sm", data: { turbo_frame: "modal_form" }
   .row.mt-2.p-0.mx-0
     = render 'search_form'
   hr.mb-0

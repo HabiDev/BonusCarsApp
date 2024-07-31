@@ -7,7 +7,7 @@ tr id="#{dom_id(sub_statement)}"
           = "Баланс до: #{number_to_currency(sub_statement.balance_before)} Баланс после: #{number_to_currency(sub_statement.balance_after)}"
       - else 
         span.d-block.text-danger.small
-          = "Есть ошибка: #{sub_statement.error_text}!"
+          = "Есть ошибка: #{sub_statement.error_text}"
   
   td.text-truncate
     = number_to_currency(sub_statement.charge_sum)

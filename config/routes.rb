@@ -8,10 +8,17 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'users' }
 
-  resources :cards 
+  resources :cards do
+    collection do 
+      post :import
+      get :import_file
+    end
+  end
 
   resources :statements  do
     patch :copy, on: :member, defaults: { format: :turbo_stream }
+    post :import
+    get :import_file
     resources :sub_statements
   end
 

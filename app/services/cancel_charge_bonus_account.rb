@@ -28,9 +28,9 @@ class CancelChargeBonusAccount < ApplicationService
                                                                   cancelSum: @cancelSum })                                                         
       cancel_bonus = response.to_array(:cancel_charge_on_bonus_account_response).first
       if cancel_bonus[:return].present?
-        @result[:return] = cancel_bonus[:return]
+        @result = cancel_bonus[:return]
       else
-        @result[:return] = nil
+        @result = nil
       end
     else
       @result[:error_server] = "E500"

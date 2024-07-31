@@ -74,14 +74,20 @@ class BonusServicesController < ApplicationController
       before_balance = ActiveBonus.call(resource.card.code_card)
       charge_bonus = ChargeBonusAccount.call(resource.card.code_card, resource.charge_sum)  
       after_balance = ActiveBonus.call(resource.card.code_card)
-
-      if charge_bonus[:error_server].present? || !charge_bonus[:error_code] == "0"
-        error_text = t("notice.#{charge_bonus[:error_server]}") || t("bonus_charge_errors.#{charge_bonus[:error_text]}")
-        resource.update!(balance_before: before_balance[:balance], balance_after: after_balance[:balance], status: 2, error_text: error_text)
-        errors_count += 1
-      else 
+      
+      if charge_bonus[:error_server].present?
+        error_text = t("notice.#{charge_bonus[:error_server]}") 
+      elsif charge_bonus[:error_code] != "0"
+        error_text = t("bonus_charge_errors.#{charge_bonus[:error_text]}")
+      else
         resource.update!(balance_before: before_balance[:balance], balance_after: after_balance[:balance], status: 1)
       end
+
+      if error_text.present?
+        resource.update!(balance_before: before_balance[:balance], balance_after: after_balance[:balance], status: 2, error_text: error_text)
+        errors_count += 1
+      end
+      
     end
     return errors_count
   end
@@ -96,13 +102,19 @@ class BonusServicesController < ApplicationController
       cancel_charge_bonus = CancelChargeBonusAccount.call(resource.card.code_card, resource.charge_sum)  
       after_balance = ActiveBonus.call(resource.card.code_card)
 
-      if cancel_charge_bonus[:error_server].present? || !cancel_charge_bonus[:error_code] == "0"
-        error_text = t("notice.#{cancel_charge_bonus[:error_server]}") || t("bonus_charge_errors.#{cancel_charge_bonus[:error_text]}")
-        resource.update!(balance_before: before_balance[:balance], balance_after: after_balance[:balance], status: 2, error_text: "Ошибка отмены: #{error_text}")
-        errors_count += 1
-      else 
+      if cancel_charge_bonus[:error_server].present?
+        error_text = t("notice.#{cancel_charge_bonus[:error_server]}") 
+      elsif cancel_charge_bonus[:error_code] != "0"
+        error_text = t("bonus_charge_errors.#{cancel_charge_bonus[:error_text]}")
+      else
         resource.update!(balance_before: before_balance[:balance], balance_after: after_balance[:balance], status: 5)
       end
+
+      if error_text.present?
+        resource.update!(balance_before: before_balance[:balance], balance_after: after_balance[:balance], status: 2, error_text: "Ошибка отмены: #{error_text}")
+        errors_count += 1     
+      end
+
     end
     return errors_count
   end

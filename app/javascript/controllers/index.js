@@ -18,3 +18,6 @@ application.register("sub-statement", SubStatementController)
 
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
+
+import Select2Controller from "./select2_controller"
+application.register("select2", Select2Controller)

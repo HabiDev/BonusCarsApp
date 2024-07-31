@@ -76,6 +76,8 @@ gem "bcrypt_pbkdf"
 
 gem "net-ping"
 
+gem "roo"
+
 # gem 'httpclient'
 
 group :development, :test do
