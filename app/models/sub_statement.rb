@@ -8,7 +8,7 @@ class SubStatement < ApplicationRecord
   validates :statement_id, :card_id, :charge_sum, presence: true
   validates :charge_sum, numericality: { greater_than: 0 }
 
-  default_scope { order(created_at: :desc, status: :asc) }
+  default_scope { joins(:card).order(owner_card: :asc, status: :asc) }
 
   def self.ransackable_attributes(auth_object = nil)
     ["card_id", "statement_id", "balance_before", "balance_after", "charge_sum", 
@@ -26,7 +26,8 @@ class SubStatement < ApplicationRecord
     (2..spreadsheet.last_row).each do |i|
       card = Card.find_by(code_card: spreadsheet.cell(i, 1))
       next unless card.present?
-      data = [parrent.to_i, card.id, spreadsheet.cell(i, 2)]
+      sum = spreadsheet.cell(i, 2).round unless spreadsheet.cell(i, 2).nil?
+      data = [parrent.to_i, card.id, sum]
       row = Hash[[header, data].transpose]
       sub_statement = new
       sub_statement.attributes = row.to_hash.slice(*accessible_attributes)
@@ -43,3 +44,7 @@ class SubStatement < ApplicationRecord
     end
   end
 end
+
+
+
+

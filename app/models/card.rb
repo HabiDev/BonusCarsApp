@@ -25,7 +25,6 @@ class Card < ApplicationRecord
       row = Hash[[header, spreadsheet.row(i)].transpose]
       card = find_by_id(row["id"]) || new
       card.attributes = row.to_hash.slice(*accessible_attributes)
-      binding.pry
       card.save
     end
   end
